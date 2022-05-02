@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { getReleaseList } from "../data/releaseList";
-import { Container, Row, Col,Table,Card,CardBody } from "reactstrap";
+import { Table,Card } from "reactstrap";
 export default function Releases() {
   let releases = getReleaseList();
   return (
@@ -27,9 +27,9 @@ export default function Releases() {
                     {release.crNumber}
                   </Link>
                 </td>
-                <td><CardBody >{release.description}</CardBody></td>
-                <td><CardBody >{release.goLiveDate}</CardBody></td>
-                <td><CardBody > {release.state}</CardBody></td>
+                <td><Card >{release.description}</Card></td>
+                <td><Card >{release.goLiveDate}</Card></td>
+                <td><Card className={`${release.state === "PENDING" ? "customCard" : "complete"}`}> {release.state}</Card></td>
               </tr>
             ))}
           </tbody>
@@ -39,3 +39,4 @@ export default function Releases() {
     </div>
   );
 }
+

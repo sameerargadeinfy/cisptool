@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
+.customCard {
+  background: rgb(94, 177, 236) !important;
+} 
+.danger {
+  background: rgb(186, 6, 33) !important;
+} 
+.complete {
+  background: rgb(151, 164, 180) !important;
+}
+.green {
+  background: rgb(13, 174, 145) !important;
+}

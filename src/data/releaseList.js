@@ -38,6 +38,10 @@ let inScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "1.47.0-rc.6",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "1.47.0-rc.6",
+          prodVersion: "1.47.0-rc.6"
+        },
         propertyChanges: "NONE",
         flywayValidation: "N/A",
         notes: "",
@@ -47,6 +51,10 @@ let inScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "2.27.0-rc.7",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "2.27.0-rc.7",
+          prodVersion: "2.27.0-rc.7"
+        },
         propertyChanges: "NONE",
         flywayValidation: "N/A",
         notes: "",
@@ -56,6 +64,10 @@ let inScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "1.32.0-rc.1",
         SIT1Validation: "ERROR",
+        versions : {
+          SIT1Version: "1.32.0-rc.1",
+          prodVersion: "2.27.0-rc.7"
+        },
         propertyChanges: "NONE",
         flywayValidation: "N/A",
         notes: "",
@@ -70,6 +82,10 @@ let inScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "1.47.0-rc.6",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "1.47.0-rc.6",
+          prodVersion: "1.47.0-rc.6"
+        },
         propertyChanges: "NONE",
         flywayValidation: "N/A",
         notes: "",
@@ -79,6 +95,10 @@ let inScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "2.27.0-rc.7",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "2.27.0-rc.7",
+          prodVersion: "2.27.0-rc.7"
+        },
         propertyChanges: "NONE",
         flywayValidation: "N/A",
         notes: "",
@@ -88,6 +108,10 @@ let inScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "1.32.0-rc.1",
         SIT1Validation: "ERROR",
+        versions : {
+          SIT1Version: "1.32.0-rc.1",
+          prodVersion: "2.27.0-rc.7"
+        },
         propertyChanges: "NONE",
         flywayValidation: "N/A",
         notes: "",
@@ -102,6 +126,10 @@ let inScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "1.47.0-rc.6",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "1.47.0-rc.6",
+          prodVersion: "1.47.0-rc.6"
+        },
         propertyChanges: "NONE",
         flywayValidation: "N/A",
         notes: "",
@@ -111,6 +139,10 @@ let inScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "2.27.0-rc.7",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "2.27.0-rc.7",
+          prodVersion: "2.27.0-rc.7"
+        },
         propertyChanges: "NONE",
         flywayValidation: "N/A",
         notes: "",
@@ -120,6 +152,10 @@ let inScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "1.32.0-rc.1",
         SIT1Validation: "ERROR",
+        versions : {
+          SIT1Version: "1.32.0-rc.1",
+          prodVersion: "2.27.0-rc.7"
+        },
         propertyChanges: "NONE",
         flywayValidation: "N/A",
         notes: "",
