@@ -1,10 +1,10 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { getReleaseList } from "../data/releaseList";
-import { Table,Card } from "reactstrap";
+import { Table, Card, Button } from "reactstrap";
 export default function Releases() {
   let releases = getReleaseList();
   return (
-    <div className="container p-5" >
+    <div className="container p-5">
       <nav>
         <Table striped bordered hover thead-light responsive>
           <thead className="thead-light">
@@ -27,16 +27,33 @@ export default function Releases() {
                     {release.crNumber}
                   </Link>
                 </td>
-                <td><Card >{release.description}</Card></td>
-                <td><Card >{release.goLiveDate}</Card></td>
-                <td><Card className={`${release.state === "PENDING" ? "customCard" : "complete"}`}> {release.state}</Card></td>
+                <td>
+                  <Card>{release.description}</Card>
+                </td>
+                <td>
+                  <Card>{release.goLiveDate}</Card>
+                </td>
+                <td>
+                  <Card
+                    className={`${
+                      release.state === "PENDING" ? "customCard" : "complete"
+                    }`}
+                  >
+                    {" "}
+                    {release.state}
+                  </Card>
+                </td>
               </tr>
             ))}
           </tbody>
         </Table>
       </nav>
       <Outlet />
+      <Link className="d-grid gap-2" to="/create">
+        <Button variant="warning" size="lg">
+          Create
+        </Button>
+      </Link>
     </div>
   );
 }
-

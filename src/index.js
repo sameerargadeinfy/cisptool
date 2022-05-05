@@ -8,26 +8,34 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Releases from "./routes/releases";
 import reportWebVitals from "./reportWebVitals";
 import Release from "./routes/release";
- 
-
+import CreateRelease from "./routes/createRelease";
+import { Provider } from 'react-redux';
+import store from "./store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<App />} />
-              <Route path="releases" element={<Releases />}></Route>
-              <Route path="releases/:releaseNumber" element={<Release />} />
-              <Route
-                path="/*"
-                element={
-                  <main style={{ padding: "1rem" }}>
-                    <p>There's nothing here!</p>
-                  </main>
-                }
-              />
-            </Routes>
-          </BrowserRouter>
+    <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="releases" element={<Releases />}></Route>
+        <Route path="releases/:releaseNumber" element={<Release />} />
+        <Route path="/create" element={<CreateRelease />} />
+        <Route
+          path="/*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+      </Routes>
+      
+    
+    
+    </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

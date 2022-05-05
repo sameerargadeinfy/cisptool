@@ -72,7 +72,7 @@ export default function Release() {
               <td>
                 {" "}
                 <Button
-                  variant="primary"
+                 
                   onClick={() => {
                     handleShow();
                     setSIT1Version(releaseRow.versions.SIT1Version);
@@ -112,7 +112,25 @@ export default function Release() {
               <td>{releaseRow.component}</td>
               <td>{releaseRow.location}</td>
               <td>{releaseRow.targetversion}</td>
-              <td>{releaseRow.SIT1Validation}</td>
+              <td>
+                {" "}
+                <Button
+                 
+                  onClick={() => {
+                    handleShow();
+                    setSIT1Version(releaseRow.versions.SIT1Version);
+                    setProdVersion(releaseRow.versions.prodVersion);
+                  }}
+                >
+                  <Card
+                    className={`${
+                      releaseRow.SIT1Validation === "ERROR" ? "danger" : "green"
+                    }`}
+                  >
+                    {releaseRow.SIT1Validation}{" "}
+                  </Card>
+                </Button>
+              </td>
               <td>{releaseRow.notes}</td>
             </tr>
           ))}

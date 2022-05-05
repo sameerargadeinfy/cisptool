@@ -179,6 +179,10 @@ let outOfScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "1.47.0-rc.6",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "1.47.0-rc.6",
+          prodVersion: "1.47.0-rc.6"
+        },
         notes: "",
       },
       {
@@ -186,6 +190,10 @@ let outOfScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "2.27.0-rc.7",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "2.27.0-rc.7",
+          prodVersion: "2.27.0-rc.7"
+        },
         notes: "",
       },
     ],
@@ -198,12 +206,20 @@ let outOfScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "1.47.0-rc.6",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "1.47.0-rc.6",
+          prodVersion: "1.47.0-rc.6"
+        },
         notes: "",
       },
       {
         component: "Asset Finance Service",
         location: "On-Prem",
         targetversion: "2.27.0-rc.7",
+        versions : {
+          SIT1Version: "2.27.0-rc.7",
+          prodVersion: "2.27.0-rc.7"
+        },
         SIT1Validation: "OK",
         notes: "",
       },
@@ -217,12 +233,20 @@ let outOfScopeReleaseComponents = [
         location: "On-Prem",
         targetversion: "1.47.0-rc.6",
         SIT1Validation: "OK",
+        versions : {
+          SIT1Version: "1.47.0-rc.6",
+          prodVersion: "1.47.0-rc.6"
+        },
         notes: "",
       },
       {
         component: "Asset Finance Service",
         location: "On-Prem",
         targetversion: "2.27.0-rc.7",
+        versions : {
+          SIT1Version: "2.27.0-rc.7",
+          prodVersion: "2.27.0-rc.7"
+        },
         SIT1Validation: "OK",
         notes: "",
       },
