@@ -11,12 +11,14 @@ import Release from "./routes/release";
 import CreateRelease from "./routes/createRelease";
 import { Provider } from 'react-redux';
 import store from "./store";
+import Header from "./components/header";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
     <BrowserRouter>
+    <Header />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="releases" element={<Releases />}></Route>

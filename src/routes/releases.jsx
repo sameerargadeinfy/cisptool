@@ -6,7 +6,8 @@ import { connect } from "react-redux";
  function Releases() {
   let releases = getReleaseList();
   return (
-    <div className="container p-5">
+    <div className="container p-1">
+      <h3>Releases</h3>
       <nav>
         <Table striped bordered hover thead-light responsive>
           <thead className="thead-light">

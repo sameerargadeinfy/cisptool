@@ -20,9 +20,12 @@ export default function Release() {
   const [SIT1Version, setSIT1Version] = useState();
   const [prodVersion, setProdVersion] = useState();
   return (
-    <Container className="p-5">
-      <h2>Release: {params.releaseNumber}</h2>
-      <h3>Release Summary</h3>
+    <Container>
+      <nav>
+      <h3>Release: {params.releaseNumber}</h3>
+      <br></br>
+      </nav>
+      <h4>Release Summary</h4>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Versions</Modal.Title>
@@ -53,7 +56,7 @@ export default function Release() {
           </tr>
         </tbody>
       </Table>
-      <h3>In-Scope Components</h3>
+      <h5>In-Scope Components</h5>
       <Table striped bordered hover responsive>
         <thead>
           <tr>
@@ -97,7 +100,7 @@ export default function Release() {
           ))}
         </tbody>
       </Table>
-      <h3>Out of Scope Components</h3>
+      <h5>Out of Scope Components</h5>
       <Table striped bordered hover responsive>
         <thead>
           <tr>
