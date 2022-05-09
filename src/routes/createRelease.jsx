@@ -4,39 +4,47 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { addARelease } from "../actions";
+import { Dispatch } from "redux";
+import store from "../store";
 
-function CreateRelease() {
+function CreateRelease(props) {
   // Making usestate for setting and
   // fetching a value in jsx
 
   const state = {
-    form: { crNumber: "", description: "", goLiveDate: "", releseState: "" },
-	formErrorMessage: {crNumber: "", description: "", goLiveDate: "", releseState: "" },
-	formValidity: {crNumber: false, description: false, goLiveDate:false, releseState: false,  buttonActive: true },
+    form: { crNumber: "", description: "", goLiveDate: "", releaseState: "" },
+	formErrorMessage: {crNumber: "", description: "", goLiveDate: "", releaseState: "" },
+	formValidity: {crNumber: false, description: false, goLiveDate:false, releaseState: false,  buttonActive: true },
 	errorMessage: "",
 	successMessage: ""
   };
-  const submitted = false;
-
+  let submitted = false;
+  const [formErrorMessage, setformErrorMessage] = useState("");
+  const [formValidity, setformValidity] = useState("");
+  const [form, setForm] = useState(state.form);
   const handleChange = event => {
     const inputfield = event.target.name;
     const enteredvalue = event.target.value;
     const newFormObj = state.form;
     newFormObj[inputfield] = enteredvalue;
-    // createNewForm = () => ({ form: newFormObj });
-	// const [form, setForm] = useState();
-  //  validateField(inputfield, enteredvalue);
+	console.log('newFormObj');
+	console.log(newFormObj);
+	setForm({form:newFormObj});
+	setForm(previousState => {
+		return { ...previousState, form:newFormObj }
+	  });
+    validateField(inputfield, enteredvalue);
   };
 
   const validateField = (fieldName, value) => {
     var formmessage = ""
     switch (fieldName) {
       case "crNumber":
-        value.length = 10 ? formmessage = "" : formmessage = "Change Request should be 10 characters";
+        value.length == 10 ? formmessage = "valid" : formmessage = "Change Request should be 10 characters";
         break;
 
       case "description":
-        value.length <= 200 ? formmessage = "" : formmessage = "description shouldn't be more than 200 characters";
+        value.length <= 200 ? formmessage = "valid" : formmessage = "description shouldn't be more than 200 characters";
         break;
 
     //   case "genre":
@@ -54,9 +62,11 @@ function CreateRelease() {
 
     var fromErrObj = state.formErrorMessage;
     fromErrObj[fieldName] = formmessage
-    // setformErrorMessage = () => { formErrorMessage: fromErrObj };
-	// const [formErrorMessage, setformErrorMessage] = useState();
+
+	setformErrorMessage({formErrorMessage: fromErrObj});
+
     var status = false;
+	
     if (formmessage === "") {
       status = true
     }
@@ -65,14 +75,17 @@ function CreateRelease() {
     formValidObj[fieldName] = status;
     formValidObj.buttonActive = formValidObj.title && formValidObj.author
       && formValidObj.genre && formValidObj.summary
-	//   setformValidity = () => { formValidity: formValidObj };
-	//   const [formValidity, setformValidity] = useState();
+	 setformValidity ({ formValidity: formValidObj });
   };
 
-  const handleSubmit = (e,props) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    props.dispatch(addARelease(state.form));
-    submitted = true
+	//setformErrorMessage();
+	console.log(props);
+	console.log(state.form);
+    store.dispatch(addARelease(state.form));
+    submitted = true;
+	
   }
 
   return (
@@ -103,7 +116,7 @@ function CreateRelease() {
               <div className="form-group">
                 <label>State</label>
                 <textarea className="form-control" name="summary" onChange={handleChange}></textarea>
-                <div className="text-danger">{state.formErrorMessage.releseState}</div>
+                <div className="text-danger">{state.formErrorMessage.releaseState}</div>
               </div>
 
               <button className="btn btn-success" type="submit" disabled={!state.formValidity.buttonActive}>Save</button>
@@ -118,5 +131,10 @@ function CreateRelease() {
       </React.Fragment>
   );
 }
-
-export default connect(null,addARelease)(CreateRelease);
+const mapDispatchToProps = {
+    addARelease : addARelease 
+}
+const mapStatetoProps = state => ({
+    form : state.form
+});
+export default connect(mapStatetoProps,mapDispatchToProps)(CreateRelease);

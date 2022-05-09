@@ -1,7 +1,9 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { getReleaseList } from "../data/releaseList";
 import { Table, Card, Button } from "reactstrap";
-export default function Releases() {
+import { getAllReleases_AsyncActionCreator } from "../actions";
+import { connect } from "react-redux";
+ function Releases() {
   let releases = getReleaseList();
   return (
     <div className="container p-5">
@@ -57,3 +59,12 @@ export default function Releases() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    releases: state.releases,
+  };
+};
+export default connect(mapStateToProps, {
+  getAllReleases_AsyncActionCreator,
+})(Releases);

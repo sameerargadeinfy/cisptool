@@ -47,7 +47,7 @@ let inScopeReleaseComponents = [
         notes: "",
       },
       {
-        component: "BBD UI",
+        component: "Process Orchestrator Service",
         location: "On-Prem",
         targetversion: "2.27.0-rc.7",
         SIT1Validation: "OK",
@@ -60,7 +60,7 @@ let inScopeReleaseComponents = [
         notes: "",
       },
       {
-        component: "BBD UI",
+        component: "Product Service v1",
         location: "On-Prem",
         targetversion: "1.32.0-rc.1",
         SIT1Validation: "ERROR",
@@ -78,7 +78,7 @@ let inScopeReleaseComponents = [
     crNumber: "CHG0342711",
     releaseDetail: [
       {
-        component: "BBD UI",
+        component: "Reference Service",
         location: "On-Prem",
         targetversion: "1.47.0-rc.6",
         SIT1Validation: "OK",
@@ -91,7 +91,7 @@ let inScopeReleaseComponents = [
         notes: "",
       },
       {
-        component: "BBD UI",
+        component: "Origination Service",
         location: "On-Prem",
         targetversion: "2.27.0-rc.7",
         SIT1Validation: "OK",
@@ -104,7 +104,7 @@ let inScopeReleaseComponents = [
         notes: "",
       },
       {
-        component: "BBD UI",
+        component: "Party Service",
         location: "On-Prem",
         targetversion: "1.32.0-rc.1",
         SIT1Validation: "ERROR",
@@ -122,7 +122,7 @@ let inScopeReleaseComponents = [
     crNumber: "CHG0325082",
     releaseDetail: [
       {
-        component: "BBD UI",
+        component: "UAM Service",
         location: "On-Prem",
         targetversion: "1.47.0-rc.6",
         SIT1Validation: "OK",
@@ -135,25 +135,25 @@ let inScopeReleaseComponents = [
         notes: "",
       },
       {
-        component: "BBD UI",
+        component: "Feature Toggle Service",
         location: "On-Prem",
-        targetversion: "2.27.0-rc.7",
+        targetversion: "2.5.0-rc.3",
         SIT1Validation: "OK",
         versions : {
-          SIT1Version: "2.27.0-rc.7",
-          prodVersion: "2.27.0-rc.7"
+          SIT1Version: "2.5.0-rc.3",
+          prodVersion: "2.5.0-rc.3"
         },
         propertyChanges: "NONE",
-        flywayValidation: "N/A",
-        notes: "",
+        flywayValidation: "ERROR",
+        notes: " GCP flyway changes to align with on-prem changes already in Prod ",
       },
       {
-        component: "BBD UI",
+        component: "SBOS Core Service",
         location: "On-Prem",
-        targetversion: "1.32.0-rc.1",
+        targetversion: "2.10.0-rc.2",
         SIT1Validation: "ERROR",
         versions : {
-          SIT1Version: "1.32.0-rc.1",
+          SIT1Version: "2.10.0-rc.2",
           prodVersion: "2.27.0-rc.7"
         },
         propertyChanges: "NONE",
