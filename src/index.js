@@ -11,17 +11,22 @@ import Release from "./routes/release";
 import CreateRelease from "./routes/createRelease";
 import { Provider } from 'react-redux';
 import store from "./store";
+import PlatformConfig from "./routes/platformConfig";
+import AddPlatform from "./routes/addPlatform";
+import EditPlatform from "./routes/editPlatform";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="releases" element={<Releases />}></Route>
         <Route path="releases/:releaseNumber" element={<Release />} />
         <Route path="/create" element={<CreateRelease />} />
+        <Route path="/platforms" element = {<PlatformConfig/>}></Route>
+        <Route path="/addPlatform" element = {<AddPlatform/>}></Route>
+        <Route path="/platforms/:component" element={<EditPlatform/>}></Route>
         <Route
           path="/*"
           element={
@@ -32,10 +37,7 @@ root.render(
         />
       </Routes>
       
-    
-    
     </BrowserRouter>
-    </Provider>
   </React.StrictMode>
 );
 
