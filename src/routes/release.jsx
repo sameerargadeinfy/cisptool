@@ -19,6 +19,7 @@ export default function Release() {
   const handleShow = () => setShow(true);
   const [SIT1Version, setSIT1Version] = useState();
   const [prodVersion, setProdVersion] = useState();
+  const today = new Date().getDate();
   return (
     <Container>
       <nav>
@@ -53,7 +54,7 @@ export default function Release() {
             <td>{release.crNumber}</td>
             <td>{release.description}</td>
             <td>{release.goLiveDate}</td>
-            <td> {release.releaseState}</td>
+            <td> {release.goLiveDate <= today ? 'COMPLETE':'PENDING'}</td>
             <td>{release.lastValidation}</td>
           </tr>
         </tbody>

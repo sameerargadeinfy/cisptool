@@ -5,6 +5,8 @@ import React from "react";
 function Releases(props) {
   let releases = props.releases.releaseReducers;
   console.log(props);
+  const today = new Date().getDate();
+
   return (
     <div className="container p-1">
       <h3>Releases</h3>
@@ -43,7 +45,7 @@ function Releases(props) {
                     }`}
                   >
                     {" "}
-                    {release.releaseState}
+                     {release.goLiveDate <= today ? 'COMPLETE':'PENDING'}
                   </Card>
                 </td>
               </tr>

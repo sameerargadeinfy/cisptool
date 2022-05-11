@@ -4,10 +4,8 @@ import { connect } from "react-redux";
 import { addARelease } from "../actions";
 import store from "../store";
 import { Navigate, useNavigate } from "react-router-dom";
-
+import TextField from "@material-ui/core/TextField";
 function CreateRelease(props) {
-  // Making usestate for setting and
-  // fetching a value in jsx
   const history = useNavigate();
   const redirect = (path) => {
     history(path);
@@ -41,13 +39,11 @@ function CreateRelease(props) {
     const enteredvalue = event.target.value;
 
     newFormObj[inputfield] = enteredvalue;
-    console.log(newFormObj);
 
     setNewFormObj((previousState) => {
       return { ...previousState, newFormObj };
     });
-    console.log("state.form after setform");
-    console.log(state);
+
     validateField(inputfield, enteredvalue);
   };
 
@@ -84,10 +80,8 @@ function CreateRelease(props) {
     var formValidObj = state.formValidity;
     formValidObj[fieldName] = status;
     formValidObj.buttonActive =
-      formValidObj.title &&
-      formValidObj.author &&
-      formValidObj.genre &&
-      formValidObj.summary;
+      formValidObj.crNumber && formValidObj.description;
+
     setformValidity({ formValidity: formValidObj });
   };
 
@@ -97,7 +91,6 @@ function CreateRelease(props) {
       return { newRelease, newFormObj };
     });
     store.dispatch(addARelease(newFormObj));
-    //console.log(props);
     submitted = true;
     redirect("/");
   };
@@ -136,17 +129,22 @@ function CreateRelease(props) {
 
             <div className="form-group">
               <label>Go Live Date</label>
-              <select
-                className="form-control"
-                onChange={handleChange}
-                name="goLiveDate"
-              ></select>
+              <TextField
+                id="goLiveDate"
+				name="goLiveDate"
+                label="Enter Go Live Date"
+                type="date"
+				onChange={handleChange}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
               <div className="text-danger">
                 {state.formErrorMessage.goLiveDate}
               </div>
             </div>
 
-            <div className="form-group">
+            {/* <div className="form-group">
               <label>State</label>
               <textarea
                 className="form-control"
@@ -156,7 +154,7 @@ function CreateRelease(props) {
               <div className="text-danger">
                 {state.formErrorMessage.releaseState}
               </div>
-            </div>
+            </div> */}
 
             <button
               className="btn btn-success"
