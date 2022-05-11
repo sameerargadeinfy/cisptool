@@ -35,7 +35,6 @@ class AddPlatform extends Component{
 
     AddPlatformtoDatabase=()=>{
         alert("Platform added successfully")
-        console.log(this.state);
 
         /*
         var addUrl = ""

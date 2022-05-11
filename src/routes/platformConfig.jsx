@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Container, Table, Card, Button } from "reactstrap";
-import {Link} from 'react-router-dom';
+import { Container, Table, Button } from "reactstrap";
+import {Link,Navigate} from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 
 class PlatformConfig extends Component{
@@ -11,67 +11,66 @@ class PlatformConfig extends Component{
             location: "Onprem",
             gitURL: "https://github.service.anz/csp/addressservice",
             hasDb: false,
-            artiURL: "Artifactory URL",
+            artiURL: "https://artifactory.gcp.anz/ui/repos/tree/General/omni-releases%2Fcsp%2Faddressservice",
             flywayMigration: null,
             flywayUndo: null,
-            prodHealth: "Prod Healthcheck URL",
-            sit1Health: "SIT1 Healthcheck URL",
+            prodHealth: "https://lb.csp.service.anz/api/addressservice/healthcheck/up",
+            sit1Health: "https://addressservice-csp-test-fuchsia.apps.omni.service.test/api/addressservice/healthcheck/up",
     
         },
         {
             component: "Reference Service",
             location: "GCP",
-            gitURL: "GitURL",
+            gitURL: "https://github.service.anz/csp/referenceservice ",
             hasDb: true,
-            artiURL: "Artifactory URL",
-            flywayMigration: "Flyway Migration URL",
-            flywayUndo: "Flyway Undo URL",
-            prodHealth: "Prod Healthcheck URL",
-            sit1Health: "SIT1 Healthcheck URL",
+            artiURL: "https://artifactory.gcp.anz/ui/repos/tree/General/omni-releases%2Fcsp%2Freferenceservice",
+            flywayMigration: "https://github.service.anz/csp/referenceservice/tree/develop/db/src/main/resources/db/migration/oracle",
+            flywayUndo: "https://github.service.anz/csp/referenceservice/tree/develop/db/src/main/resources/db/undo/oracle",
+            prodHealth: "https://lb.csp.service.anz/api/referenceservice/healthcheck/up",
+            sit1Health: "https://referenceservice-csp-test-fuchsia.apps.omni.service.test/api/referenceservice/healthcheck/up",
     
         }
         ,
         {
             component: "Component number 3",
             location: "GCP",
-            gitURL: "GitURL",
+            gitURL: "https://github.service.anz/csp/referenceservice",
             hasDb: true,
-            artiURL: "Artifactory URL",
-            flywayMigration: "Flyway Migration URL",
-            flywayUndo: "Flyway Undo URL",
-            prodHealth: "Prod Healthcheck URL",
-            sit1Health: "SIT1 Healthcheck URL"
-    
+            artiURL: "https://artifactory.gcp.anz/ui/repos/tree/General/omni-releases%2Fcsp%2Freferenceservice",
+            flywayMigration: "https://github.service.anz/csp/referenceservice/tree/develop/db/src/main/resources/db/migration/psql",
+            flywayUndo: "https://github.service.anz/csp/referenceservice/tree/develop/db/src/main/resources/db/undo/psql",
+            prodHealth: "https://referenceservice.csp.gcp.anz/api/referenceservice/healthcheck/up",
+            sit1Health: "https://referenceservice-preprod.csp.gcpnp.anz/api/referenceservice/healthcheck/up"
         }];
         return data;
     }
 
     state = {
         show:false,
-        selectedComponent:""
+        selectedComponent:null,
+        selectedLocation:null,
+        enableButtons:true
     }
 
     handleShow= ()=>{
         this.setState({show:true})
-        console.log(this.state.show);
     }
     handleHide= ()=>{
         this.setState({show:false})
     }
 
-    handleEdit(){
-        alert("Edited")
+    handleEdit=()=>{
+        var compName = this.state.selectedComponent+this.state.selectedLocation;
+        console.log(compName);
+        return(<Navigate to='platforms/addPlatforms'></Navigate>);
     }
 
     handleDelete(){
-        alert("Deleted")
+        alert("Deleted");
     }
 
     handleRowClick=(data)=>{
-        console.log(data.component);
-        this.setState({selectedComponent:data.component})
-        this.setState({show:true});
-
+        this.setState({selectedComponent:data.component,selectedLocation:data.location,show:true},()=>{this.setState({enableButtons:false})});
     }
 
     render(){
@@ -80,7 +79,7 @@ class PlatformConfig extends Component{
             <>
             <Container className = "p-2">
                 <h2>Platform Configuration</h2>
-                <Button><Link to="/addPlatform">Add Platform</Link></Button>
+                <Link to="addPlatform" className='btn btn-primary'>Add Platform</Link>
 
                 <Modal show={this.state.show} onHide={this.handleHide}>
                     <Modal.Header closeButton>
@@ -90,8 +89,8 @@ class PlatformConfig extends Component{
                         What would you like to do?
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button className = "btn btn-warning" onClick={this.handleEdit}>Edit</Button>
-                        <Button className = "btn btn-danger" onClick={this.handleDelete}>Delete</Button>
+                        <Link className='btn btn-warning' to={'/edit/'+this.state.selectedComponent+'/'+this.state.selectedLocation}>Edit</Link>
+                        <Button className = "btn btn-danger" onClick={this.handleDelete} disabled={this.state.enableButtons}>Delete</Button>
                     </Modal.Footer>
                 </Modal>
 
