@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { Container, Table, Card, Button } from "reactstrap";
 import { React, useState } from "react";
 import Modal from "react-bootstrap/Modal";
-
+import AddDeleteTableRows from "../components/AddDeleteTableRows";
 import {
   getRelease,
   getReleaseSummary,
@@ -22,8 +22,10 @@ export default function Release() {
   return (
     <Container>
       <nav>
-      <h3>Release: {params.releaseNumber}</h3>
-      <br></br>
+        <h2>Release Configuration</h2>
+        <br></br>
+        <h4>Release: {params.releaseNumber}</h4>
+        <br></br>
       </nav>
       <h4>Release Summary</h4>
       <Modal show={show} onHide={handleClose}>
@@ -31,9 +33,9 @@ export default function Release() {
           <Modal.Title>Versions</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          SIT1 Version: { SIT1Version }
+          SIT1 Version: {SIT1Version}
           <br></br>
-          PROD Version: { prodVersion }
+          PROD Version: {prodVersion}
         </Modal.Body>
       </Modal>
       <Table light striped bordered hover responsive>
@@ -51,7 +53,7 @@ export default function Release() {
             <td>{release.crNumber}</td>
             <td>{release.description}</td>
             <td>{release.goLiveDate}</td>
-            <td> {release.state}</td>
+            <td> {release.releaseState}</td>
             <td>{release.lastValidation}</td>
           </tr>
         </tbody>
@@ -75,7 +77,6 @@ export default function Release() {
               <td>
                 {" "}
                 <Button
-                 
                   onClick={() => {
                     handleShow();
                     setSIT1Version(releaseRow.versions.SIT1Version);
@@ -100,6 +101,7 @@ export default function Release() {
           ))}
         </tbody>
       </Table>
+      <AddDeleteTableRows />
       <h5>Out of Scope Components</h5>
       <Table striped bordered hover responsive>
         <thead>
@@ -118,7 +120,6 @@ export default function Release() {
               <td>
                 {" "}
                 <Button
-                 
                   onClick={() => {
                     handleShow();
                     setSIT1Version(releaseRow.versions.SIT1Version);
@@ -139,6 +140,13 @@ export default function Release() {
           ))}
         </tbody>
       </Table>
+      <AddDeleteTableRows />
+      <br></br>
+      <br></br> 
+      <button className="btn btn-success" type="submit">
+        Validate Release
+      </button>
     </Container>
+    
   );
 }

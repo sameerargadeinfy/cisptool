@@ -1,10 +1,10 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { getReleaseList } from "../data/releaseList";
 import { Table, Card, Button } from "reactstrap";
-import { getAllReleases_AsyncActionCreator } from "../actions";
 import { connect } from "react-redux";
- function Releases() {
-  let releases = getReleaseList();
+import React from "react";
+function Releases(props) {
+  let releases = props.releases.releaseReducers;
+  console.log(props);
   return (
     <div className="container p-1">
       <h3>Releases</h3>
@@ -39,11 +39,11 @@ import { connect } from "react-redux";
                 <td>
                   <Card
                     className={`${
-                      release.state === "PENDING" ? "customCard" : "complete"
+                      release.releaseState === "PENDING" ? "customCard" : "complete"
                     }`}
                   >
                     {" "}
-                    {release.state}
+                    {release.releaseState}
                   </Card>
                 </td>
               </tr>
@@ -61,11 +61,10 @@ import { connect } from "react-redux";
   );
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(releases) {
   return {
-    releases: state.releases,
+    releases,
   };
-};
-export default connect(mapStateToProps, {
-  getAllReleases_AsyncActionCreator,
-})(Releases);
+}
+
+export default connect(mapStateToProps)(Releases);

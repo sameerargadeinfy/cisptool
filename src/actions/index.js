@@ -1,3 +1,4 @@
+import React from "react";
 export const ADD_A_RELEASE = "ADD_A_RELEASE";
 export const GET_ALL_RELEASES = "GET_ALL_RELEASES";
 
@@ -14,7 +15,7 @@ export function getAllReleases(releases) {
   }
 }
 export function getAllReleases_AsyncActionCreator(releases) {
-  return (dispatch) => {
-      dispatch(getAllReleases(releases));
+  return () => {
+      React.dispatch(getAllReleases(releases));
   };
 }

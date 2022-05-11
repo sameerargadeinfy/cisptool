@@ -8,6 +8,7 @@ export default function App() {
   return (
     <div>
       <Releases></Releases>
+     
       <Outlet />
     </div>
   );
