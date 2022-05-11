@@ -39,7 +39,7 @@ class EditPlatform extends Component{
         this.setState({[name]:val});
         if (name=="component"){
             if (val.length<1 || val.length>255){
-                this.setState({nameError:"Component must have name"});
+                this.setState({nameError:"Component name must be between 1 and 255 characters"});
                 this.setState({validForm:false});
             }else{
                 this.setState({nameError:""});
@@ -77,7 +77,7 @@ class EditPlatform extends Component{
     render(){
         return(
         <div style = {{width:500, margin: '0px auto'}}>
-            <h3 className="text-center">Edit Platform</h3>
+            <h3 className="text-center">Edit {this.state.component} ({this.state.location})</h3>
             
             <form>
                 <div className = 'form-group'>

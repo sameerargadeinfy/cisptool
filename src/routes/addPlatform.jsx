@@ -55,7 +55,7 @@ class AddPlatform extends Component{
     render(){
         return(
         <div style = {{width:500, margin: '0px auto'}}>
-            <h3 className="text-center">Add Platform</h3>
+            <h3 className="text-center">Add Component</h3>
             <form>
                 <div className = 'form-group'>
                     <label>Component Name</label>

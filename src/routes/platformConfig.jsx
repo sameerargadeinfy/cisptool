@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Table, Button } from "reactstrap";
-import {Link,Navigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 
 class PlatformConfig extends Component{
@@ -59,14 +59,10 @@ class PlatformConfig extends Component{
         this.setState({show:false})
     }
 
-    handleEdit=()=>{
-        var compName = this.state.selectedComponent+this.state.selectedLocation;
-        console.log(compName);
-        return(<Navigate to='platforms/addPlatforms'></Navigate>);
-    }
-
     handleDelete(){
-        alert("Deleted");
+        if (window.confirm('Are you sure you wish to delete this item?')){
+            alert("Deleted");
+        }
     }
 
     handleRowClick=(data)=>{
@@ -78,12 +74,12 @@ class PlatformConfig extends Component{
         return(
             <>
             <Container className = "p-2">
-                <h2>Platform Configuration</h2>
-                <Link to="addPlatform" className='btn btn-primary'>Add Platform</Link>
+                <h2>Platform Configuration <Link to="addPlatform" className='btn btn-primary'>Add Component</Link></h2>
+                <span>Click on the component name to edit/delete</span>
 
                 <Modal show={this.state.show} onHide={this.handleHide}>
                     <Modal.Header closeButton>
-                        <Modal.Title>{this.state.selectedComponent} Settings</Modal.Title>
+                        <Modal.Title>{this.state.selectedComponent} ({this.state.selectedLocation}) Settings</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         What would you like to do?
@@ -110,16 +106,16 @@ class PlatformConfig extends Component{
                     </thead>
                     <tbody>
                         {platdata.map(data=>{return(
-                            <tr key={data.component} onClick={()=>this.handleRowClick(data)}>
-                                <td>{data.component}</td>
+                            <tr key={data.component}>
+                                <td onClick={()=>this.handleRowClick(data)}>{data.component}</td>
                                 <td>{data.location}</td>
-                                <td>{data.gitURL}</td>
+                                <td><a href={data.gitURL}>{data.gitURL}</a></td>
                                 <td>{data.hasDb ? "T":"F"}</td>
-                                <td>{data.artiURL}</td>
-                                <td>{data.flywayMigration}</td>
-                                <td>{data.flywayUndo}</td>
-                                <td>{data.prodHealth}</td>
-                                <td>{data.sit1Health}</td>
+                                <td><a href={data.artiURL}>{data.artiURL}</a></td>
+                                <td><a href={data.flywayMigration}>{data.flywayMigration}</a></td>
+                                <td><a href={data.flywayUndo}>{data.flywayUndo}</a></td>
+                                <td><a href={data.prodHealth}>{data.prodHealth}</a></td>
+                                <td><a href={data.sit1Health}>{data.sit1Health}</a></td>
                             </tr>
                         )})}
                     </tbody>
@@ -128,7 +124,5 @@ class PlatformConfig extends Component{
             </>
         )
     }
-    
-
 }
 export default PlatformConfig;
