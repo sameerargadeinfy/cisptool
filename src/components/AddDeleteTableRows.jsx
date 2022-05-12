@@ -8,6 +8,7 @@ function AddDeleteTableRows() {
       componentName: "",
       location: "",
       version: "",
+      notes:"",
     };
     setRowsData([...rowsData, rowsInput]);
   };
@@ -34,6 +35,8 @@ function AddDeleteTableRows() {
                 <th>Component</th>
                 <th>Location</th>
                 <th>Version</th>
+                <th>Notes</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -43,14 +46,17 @@ function AddDeleteTableRows() {
                 deleteTableRows={deleteTableRows}
                 handleChange={handleChange}
               />
-            </tbody>
-            <button className="btn btn-outline-success" onClick={addTableRows}>
+              <tr>
+               <button className="btn btn-outline-success" onClick={addTableRows}>
               Add
             </button>{" "}
-            &nbsp;{" "}
+          
             <button className="btn btn-outline-success" onClick={addTableRows}>
-              Save
+              Save & Validate
             </button>
+            </tr>
+            </tbody>
+           
           </table>
         </div>
         <div className="col-sm-4"></div>
